@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Kana Overlapping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body > div {
+      height: 550px;
+      padding: 3em;
+      margin-top: -130px;
+    }
+    body > div > div {
+      font-size: 30em;
+      position: absolute;
+      opacity: 0.1;
+    }
+    </style>
+</head>
+<body>
+    <script>
+    document.body.innerHTML =
+    [ "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"
+    , "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン"
+    , "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    ].map(function(set){
+        return "<div>" + set
+          .split("")
+            .map(function(char){
+              return "<div>" + char + "</div>";
+            }).join("\n") + "</div>";
+    }).join("\n");
+    </script>
+</body>
+
+</html>
