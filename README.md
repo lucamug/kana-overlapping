@@ -1,6 +1,9 @@
 # kana-overlapping
+I was curious to see the hot spots, the most engulfed area of the typical square used, in Japanese language, to write characters.
 
-I was curious to understand what would be the hot spots, the most engulfed area of the typical square used, in Japanese language, to write characters. So I overlapped all the basic Hiragana/Katakana/Romaji characters.
+What would happen if you write all characters in top of each other? Which area would be darker?
+
+So I overlapped all the basic Hiragana/Katakana/Romaji characters. This is the result.
 
 ### [Demo](https://lucamug.github.io/kana-overlapping/)
 
