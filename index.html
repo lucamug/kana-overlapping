@@ -22,11 +22,12 @@
     body > div:nth-of-type(n+4) {
       font-family: sans-serif;
     }
-
     body > div > div {
       font-size: 100vw;
       position: absolute;
       opacity: 0.08;
+      left: 50%;
+      transform: translateX(-50%);
       animation-name: pulse_animation;
       animation-timing-function: linear;
       animation-duration: 1000ms;
@@ -38,14 +39,12 @@
       }
       body > div > div {
         font-size: 50vw;
-        left: 50%;
-        transform: translateX(-50%);
       }
     }
     @keyframes pulse_animation {
-      0% {transform: opacity: 0;}
-      50% {color: #7d1b1b; opacity: 1.0;}
-      100% {transform: opacity: 0;}
+      0% {transform: opacity: 0.08;}
+      50% {color: #7d1b1b; opacity: 0.80;}
+      100% {transform: opacity: 0.08;}
     }
     </style>
 </head>
