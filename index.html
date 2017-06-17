@@ -5,32 +5,71 @@
     <title>Kana Overlapping</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-    body > div {
-      height: 550px;
-      padding: 3em;
-      margin-top: -130px;
+    body {
+      margin: 0px;
+      background-color: #eee;
     }
+    h1 {
+      font-family: sans-serif;
+      text-align: center;
+      color: #bbb;
+    }
+    body > div {
+      position: relative;
+      height: 128vw;
+      margin-top: -24vw;
+    }
+    body > div:nth-of-type(n+4) {
+      font-family: sans-serif;
+    }
+
     body > div > div {
-      font-size: 30em;
+      font-size: 100vw;
       position: absolute;
-      opacity: 0.1;
+      opacity: 0.08;
+      animation-name: pulse_animation;
+      animation-timing-function: linear;
+      animation-duration: 1000ms;
+    }
+    @media (min-width: 500px) {
+      body > div {
+        height: 65vw;
+        margin-top: -12vw;
+      }
+      body > div > div {
+        font-size: 50vw;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    @keyframes pulse_animation {
+      0% {transform: opacity: 0;}
+      50% {color: #7d1b1b; opacity: 1.0;}
+      100% {transform: opacity: 0;}
     }
     </style>
 </head>
 <body>
     <script>
-    document.body.innerHTML =
-    [ "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"
-    , "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン"
-    , "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    ].map(function(set){
-        return "<div>" + set
-          .split("")
-            .map(function(char){
-              return "<div>" + char + "</div>";
-            }).join("\n") + "</div>";
-    }).join("\n");
+      var css = [];
+      for (i = 0; i <= 46; i++) {
+        css.push("body > div > div:nth-of-type(100n+" + i + ") {animation-delay: " + i/2 + "s;}")
+      }
+      const style = document.createElement('style');
+      style.innerHTML = css.join("\n");
+      document.head.appendChild(style);
+      const kana =
+        [ "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"
+        , "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン"
+        , "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        ].map(function(set){
+            return "<div>" + set
+              .split("")
+                .map(function(char){
+                  return "<div>" + char + "</div>";
+                }).join("\n") + "</div>";
+        }).join("\n")
+      document.body.innerHTML = "<h1>Kana Overlapping</h1>" + kana + kana;
     </script>
 </body>
-
 </html>
